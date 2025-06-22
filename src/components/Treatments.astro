@@ -1,21 +1,138 @@
 ---
 // src/components/Treatments.astro
 ---
-<section id="treatments">
-    <h2>Tratamientos</h2>
-    <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 800px; margin: auto;">
-      <div>
-        <h3>Endoscopia digestiva</h3>
-        <p>Exploración mínimamente invasiva para el diagnóstico y tratamiento de patologías esofagogástricas y colónicas.</p>
+
+<section id="treatments" class="treatments-section">
+  <div class="container">
+    <h2 class="section-title">Tratamientos</h2>
+    
+    <div class="treatments-list">
+      <div class="treatment-card">
+        <div class="treatment-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12c0 5.5-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2s10 4.5 10 10z"></path><path d="M18 12H6"></path><path d="M12 18V6"></path></svg>
+        </div>
+        <h3 class="treatment-title">Endoscopia digestiva</h3>
+        <p class="treatment-description">Exploración mínimamente invasiva para el diagnóstico y tratamiento de patologías esofagogástricas y colónicas.</p>
       </div>
-      <div>
-        <h3>Control nutricional digestivo</h3>
-        <p>Planificación dietética adaptada a cada paciente según su patología digestiva.</p>
+      
+      <div class="treatment-card">
+        <div class="treatment-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.89 1.45l8 4A2 2 0 0 1 22 7.24v9.53a2 2 0 0 1-1.11 1.79l-8 4a2 2 0 0 1-1.79 0l-8-4a2 2 0 0 1-1.1-1.8V7.24a2 2 0 0 1 1.11-1.79l8-4a2 2 0 0 1 1.78 0z"></path><polyline points="2.32 6.16 12 11 21.68 6.16"></polyline><line x1="12" y1="22.76" x2="12" y2="11"></line></svg>
+        </div>
+        <h3 class="treatment-title">Control nutricional digestivo</h3>
+        <p class="treatment-description">Planificación dietética adaptada a cada paciente según su patología digestiva.</p>
       </div>
-      <div>
-        <h3>Seguimiento crónico de enfermedades intestinales</h3>
-        <p>Control periódico, analíticas y coordinación con otros especialistas para un enfoque integral.</p>
+      
+      <div class="treatment-card">
+        <div class="treatment-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><path d="M9 14h.01"></path><path d="M9 17h.01"></path><path d="M12 16l.01-.011"></path><path d="M12 13l.01-.011"></path><path d="M15 16l.01-.011"></path><path d="M15 13l.01-.011"></path></svg>
+        </div>
+        <h3 class="treatment-title">Seguimiento crónico de enfermedades intestinales</h3>
+        <p class="treatment-description">Control periódico, analíticas y coordinación con otros especialistas para un enfoque integral.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<style>
+  .treatments-section {
+    padding: 5rem 0;
+    background-color: #f8f9fa;
+  }
   
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+    position: relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #4a90e2;
+    border-radius: 2px;
+  }
+  
+  .treatments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .treatment-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+  }
+  
+  .treatment-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .treatment-icon {
+    background-color: rgba(74, 144, 226, 0.1);
+    color: #4a90e2;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  
+  .treatment-title {
+    font-size: 1.3rem;
+    color: #2d3748;
+    margin: 0 0 0.75rem;
+  }
+  
+  .treatment-description {
+    font-size: 1rem;
+    color: #4a5568;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .treatments-section {
+      padding: 4rem 0;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .treatment-card {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.5rem;
+    }
+    
+    .treatment-icon {
+      margin-bottom: 1rem;
+    }
+  }
+</style>

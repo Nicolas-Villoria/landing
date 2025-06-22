@@ -1,11 +1,250 @@
 ---
 // src/components/About.astro
 ---
-<section id="about">
-    <h2>Sobre el Dr. Villoria</h2>
-    <p style="max-width: 800px; margin: auto; text-align: center;">
-      El Dr. Villoria es un médico especialista en Digestología con más de 20 años de experiencia en el diagnóstico y tratamiento de enfermedades del aparato digestivo.
-      Formado en centros de referencia nacional e internacional, combina el trato humano con la medicina basada en la evidencia.
-    </p>
+
+<section id="about" class="about-section">
+  <h2 class="section-title">Sobre el Dr. Villoria</h2>
+  <div class="container">
+    <div class="about-content">
+      <div class="about-image">
+        <img src="/src/assets/profile-pic.png" alt="Dr. Villoria" class="profile-pic" />
+        <div class="experience-badge">
+          <span class="years">20+</span>
+          <span class="text">Años de experiencia</span>
+        </div>
+      </div>
+      
+      <div class="about-text">
+        <p class="intro">
+          Especialista en Aparato Digestivo dedicado a proporcionar atención médica de excelencia con un enfoque personalizado.
+        </p>
+        
+        <div class="credentials">
+          <div class="credential">
+            <div class="credential-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="credential-text">
+              <h3>Formación Académica</h3>
+              <p>Doctor en Medicina por la Universidad Autónoma de Barcelona (UAB) con Premio Extraordinario de Doctorado.</p>
+            </div>
+          </div>
+          
+          <div class="credential">
+            <div class="credential-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path></svg>
+            </div>
+            <div class="credential-text">
+              <h3>Especialidad</h3>
+              <p>Especialista en Aparato Digestivo desde 2003 y Fellow in Gastroenterology por la European Board of Gastroenterology desde 2006.</p>
+            </div>
+          </div>
+          
+          <div class="credential">
+            <div class="credential-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            </div>
+            <div class="credential-text">
+              <h3>Investigación</h3>
+              <p>Autor o coautor en más de 50 publicaciones en revistas científicas nacionales e internacionales de reconocido prestigio.</p>
+            </div>
+          </div>
+        </div>
+        
+        <p class="additional-info">
+          Actualmente profesor asociado en la Facultad de Medicina de la UAB y miembro activo de la Academia de Ciencias Médicas de Catalunya y Balears, así como de la Sociedad Catalana de Digestología.
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
+
+<style>
+  .about-section {
+    padding: 3.5rem 0;
+  }
   
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    color: #2c3e50;
+    position: relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #4a90e2;
+    border-radius: 2px;
+  }
+  
+  .about-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    padding: 2.5rem; 
+    background-color: #FFFFFF;
+    border-radius: 20px;
+  }
+  
+  .about-image {
+    flex: 1;
+    position: relative;
+    max-width: 400px;
+  }
+  
+  .profile-pic {
+    width: 100%;
+    height: auto;
+  }
+  
+  .experience-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background-color: #4a90e2;
+    color: white;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .years {
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: 1;
+  }
+  
+  .text {
+    font-size: 0.7rem;
+    line-height: 1.2;
+  }
+  
+  .about-text {
+    flex: 1.5;
+  }
+  
+  .intro {
+    font-size: 1.3rem;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+  
+  .credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .credential {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .credential-icon {
+    background-color: rgba(74, 144, 226, 0.1);
+    color: #4a90e2;
+    padding: 0.75rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  
+  .credential-text h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: #2d3748;
+  }
+  
+  .credential-text p {
+    font-size: 1rem;
+    color: #4a5568;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  .additional-info {
+    font-size: 1rem;
+    color: #4a5568;
+    line-height: 1.6;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+  }
+  
+  @media (max-width: 992px) {
+    .about-content {
+      flex-direction: column;
+      gap: 3rem;
+    }
+    
+    .about-image {
+      margin: 0 auto;
+    }
+    
+    .about-text {
+      text-align: center;
+    }
+    
+    .credential {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .about-section {
+      padding: 4rem 0;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .intro {
+      font-size: 1.1rem;
+    }
+    
+    .experience-badge {
+      width: 80px;
+      height: 80px;
+      padding: 0.75rem;
+      right: -10px;
+      bottom: -10px;
+    }
+    
+    .years {
+      font-size: 1.5rem;
+    }
+    
+    .text {
+      font-size: 0.6rem;
+    }
+  }
+</style>
