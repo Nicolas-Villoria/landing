@@ -1,28 +1,191 @@
 ---
+// src/components/Contact.astro
 ---
 
-
-<section id="contact">
-    <h2 class="text-2xl font-bold mb-6 text-center">Contacto</h2>
-    <div class="flex flex-wrap lg:flex-nowrap justify-center gap-8 p-4">
-      <div class="flex-1 min-w-[300px] max-w-[500] text-left space-y-2 order-1">
-        <p><strong>Dirección:</strong> Pg. de St. Gervasi, 55, 08022 Barcelona</p>
-        <p><strong>Teléfono:</strong> <a href="tel:+34935952020" class="text-blue-600 hover:underline">+34 93 595 20 20</a></p>
-        <p><strong>Email:</strong> <a href="mailto:lauria147@gmail.com" class="text-blue-600 hover:underline">lauria147@gmail.com</a></p>
+<section id="contact" class="contact-section">
+  <div class="container">
+    <h2 class="section-title">Contacto</h2>
+    
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <p>Pg. de St. Gervasi, 55, 08022 Barcelona</p>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <p><a href="tel:+34935952020">+34 93 595 20 20</a></p>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+          <p><a href="mailto:lauria147@gmail.com">lauria147@gmail.com</a></p>
+        </div>
       </div>
-  
-      <div class="flex-1 min-w-[300px] max-w-[500px] order-2">
+      
+      <div class="map-container">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2992.310357326436!2d2.1353409759502173!3d41.41078109454393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4980f77457873%3A0x1c3155ca2c6590de!2sLA%20ROTONDA%20CONSULTAS%20M%C3%89DICAS%20ALQUILER%20EN%20BARCELONA!5e0!3m2!1ses!2ses!4v1707594093689!5m2!1ses!2ses"
           width="100%"
-          height="300"
-          style="border:0; border-radius: 8px; border: 1px solid #ccc;"
+          height="100%"
+          style="border:0;"
           allowfullscreen=""
           loading="lazy">
         </iframe>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding: 5rem 0;
+    background-color: #f8f9fa;
+  }
   
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
   
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: #2c3e50;
+    position: relative;
+  }
   
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #4a90e2;
+    border-radius: 2px;
+  }
+  
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  
+  .contact-info {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2.5rem;
+    padding-bottom: 4.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .contact-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: rgba(74, 144, 226, 0.1);
+    color: #4a90e2;
+    flex-shrink: 0;
+  }
+  
+  .contact-item p {
+    margin: 0;
+    font-size: 1rem;
+    color: #4a5568;
+    line-height: 1.6;
+  }
+  
+  .contact-item a {
+    color: #4a90e2;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .contact-item a:hover {
+    color: #2c5282;
+  }
+  
+  .map-container {
+    height: 280px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+  }
+  
+  @media (max-width: 992px) {
+    .container {
+      padding: 0 3rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .contact-section {
+      padding: 4rem 0;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    .contact-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .contact-info {
+      padding: 2rem;
+    }
+    
+    .contact-item {
+      gap: 0.75rem;
+    }
+    
+    .map-container {
+      height: 220px;
+    }
+    
+    .container {
+      padding: 0 1.5rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .contact-info {
+      padding: 1.5rem;
+    }
+    
+    .contact-item {
+      gap: 0.5rem;
+    }
+    
+    .contact-icon {
+      width: 32px;
+      height: 32px;
+    }
+  }
+</style>

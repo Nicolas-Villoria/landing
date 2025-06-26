@@ -1,48 +1,104 @@
-# Astro Starter Kit: Basics
+# Doctor's Website - Modern Medical Practice Site
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+A professional, elegant, and minimalistic website designed for a medical practice specializing in gastroenterology. Built with Astro for optimal performance and easy content management.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+![Doctor's Website Preview](src/assets/rotonda.png)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Project Overview
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+This website provides a clean, professional online presence for a medical practice with the following features:
 
-## 🚀 Project Structure
+- **Modern, responsive design** that works seamlessly on all devices
+- **Elegant visual language** with consistent styling and spacing
+- **Patient-focused interface** with clear information architecture
+- **Performance-optimized** for fast loading and SEO benefits
 
-Inside of your Astro project, you'll see the following folders and files:
+## Site Components
+
+The site includes the following key sections:
+
+- **Navbar**: Clean navigation with responsive mobile menu
+- **Hero**: Professional introduction with call-to-action
+- **About**: Doctor's credentials and experience
+- **Specialties**: Medical specializations with icon-based cards
+- **Treatments**: Available medical treatments with detailed descriptions
+- **Blog Preview**: Latest articles in responsive grid/list layouts
+- **Contact**: Contact information with embedded map
+- **Footer**: Additional links and information
+
+## Project Structure
 
 ```text
 /
 ├── public/
-│   └── favicon.svg
+│   ├── favicon.svg
+│   └── logo.svg
 ├── src/
+│   ├── assets/
+│   │   ├── images and icons
+│   ├── components/
+│   │   ├── About.astro
+│   │   ├── BlogPreview.astro
+│   │   ├── Contact.astro
+│   │   ├── Footer.astro
+│   │   ├── Header.astro
+│   │   ├── Hero.astro
+│   │   ├── Navbar.astro
+│   │   ├── Specialties.astro
+│   │   ├── Treatments.astro
+│   │   └── Welcome.astro
 │   ├── layouts/
 │   │   └── Layout.astro
 │   └── pages/
 │       └── index.astro
-└── package.json
+├── astro.config.mjs
+├── package.json
+├── tailwind.config.mjs
+└── tsconfig.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Technology Stack
 
-## 🧞 Commands
+- **[Astro](https://astro.build/)**: Fast, modern static site generator
+- **[Tailwind CSS](https://tailwindcss.com/)**: Utility-first CSS framework for rapid styling
+- **Modern JavaScript/TypeScript**: For interactive components
+- **Responsive Design**: Mobile-first approach with adaptive layouts
+- **SVG Icons**: Lightweight, scalable icons for visual elements
+
+## 🧞 Development Commands
 
 All commands are run from the root of the project, from a terminal:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+| `pnpm install`            | Installs dependencies                            |
+| `pnpm dev`                | Starts local dev server at `localhost:4321`      |
+| `pnpm build`              | Build your production site to `./dist/`          |
+| `pnpm preview`            | Preview your build locally, before deploying     |
 
-## 👀 Want to learn more?
+## Design Features
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Minimalistic aesthetics**: Clean design with ample white space
+- **Consistent visual language**: Unified color scheme and styling
+- **Accessible interface**: High-contrast text and intuitive navigation
+- **Responsive layouts**: Content adapts gracefully to all screen sizes
+  - Desktop: Multi-column grid layouts
+  - Tablet: Adaptive layouts with adjusted spacing
+  - Mobile: Single-column with optimized readability
+
+## Deployment
+
+The site can be deployed to any static hosting platform, including:
+
+- Netlify
+- Vercel
+- GitHub Pages
+- Any standard web hosting with HTML/CSS/JS support
+
+## Content Management
+
+Site content can be easily updated by modifying the Astro component files in the `src/components/` directory. Each section is self-contained with its own styles and markup.
+
+---
+
+Developed with ❤️ using Astro
