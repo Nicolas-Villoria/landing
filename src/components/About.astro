@@ -3,10 +3,10 @@
 ---
 
 <section id="about" class="about-section">
-  <h2 class="section-title">Sobre el Dr. Villoria</h2>
+  <h2 class="section-title transition-item">Sobre el Dr. Villoria</h2>
   <div class="container">
     <div class="about-content">
-      <div class="about-image">
+      <div class="about-image transition-item">
         <img src="/assets/profile-pic.png" alt="Dr. Villoria" class="profile-pic" />
         <div class="experience-badge">
           <span class="years">20+</span>
@@ -15,12 +15,12 @@
       </div>
       
       <div class="about-text">
-        <p class="intro">
+        <p class="intro transition-item" data-delay="100">
           Especialista en Aparato Digestivo dedicado a proporcionar atención médica de excelencia con un enfoque personalizado.
         </p>
         
         <div class="credentials">
-          <div class="credential">
+          <div class="credential transition-item" data-delay="200">
             <div class="credential-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
             </div>
@@ -30,7 +30,7 @@
             </div>
           </div>
           
-          <div class="credential">
+          <div class="credential transition-item" data-delay="300">
             <div class="credential-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path></svg>
             </div>
@@ -40,7 +40,7 @@
             </div>
           </div>
           
-          <div class="credential">
+          <div class="credential transition-item" data-delay="400">
             <div class="credential-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
             </div>
@@ -51,7 +51,7 @@
           </div>
         </div>
         
-        <p class="additional-info">
+        <p class="additional-info transition-item" data-delay="500">
           Actualmente profesor asociado en la Facultad de Medicina de la UAB y miembro activo de la Academia de Ciencias Médicas de Catalunya y Balears, así como de la Sociedad Catalana de Digestología.
         </p>
       </div>
@@ -247,4 +247,56 @@
       font-size: 0.6rem;
     }
   }
+
+  /* Transition styles */
+  .transition-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .transition-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .transition-item {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
 </style>
+
+<script>
+  // Intersection Observer for scroll animations
+  document.addEventListener('DOMContentLoaded', function() {
+    const observerOptions = {
+      root: null, // viewport
+      rootMargin: '0px',
+      threshold: 0.1 // Trigger when at least 10% of the target is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+          const delay = target.getAttribute('data-delay') || '0';
+          
+          setTimeout(() => {
+            target.classList.add('is-visible');
+          }, parseInt(delay));
+          
+          // Stop observing after animation
+          observer.unobserve(target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all transition items
+    document.querySelectorAll('.transition-item').forEach(item => {
+      observer.observe(item);
+    });
+  });
+</script>
