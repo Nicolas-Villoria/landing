@@ -28,6 +28,13 @@
           </div>
           <p><a href="mailto:lauria147@gmail.com">lauria147@gmail.com</a></p>
         </div>
+        
+        <div class="appointment-cta">
+          <a href="/cita" class="primary-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            Solicitar cita online
+          </a>
+        </div>
       </div>
       
       <div class="map-container">
@@ -87,7 +94,6 @@
     background-color: white;
     border-radius: 10px;
     padding: 2.5rem;
-    padding-bottom: 4.8rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -120,17 +126,41 @@
   }
   
   .contact-item a {
-    color: #4a90e2;
+    color: #4a5568;
     text-decoration: none;
     transition: color 0.2s ease;
   }
   
   .contact-item a:hover {
-    color: #2c5282;
+    color: #4a90e2;
+  }
+  
+  .appointment-cta {
+    margin-top: 1.5rem;
+  }
+  
+  .primary-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.5rem;
+    background-color: #4a90e2;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+  
+  .primary-button:hover {
+    background-color: #3a7bc8;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
   }
   
   .map-container {
-    height: 280px;
+    height: 320px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);

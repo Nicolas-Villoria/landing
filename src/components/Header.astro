@@ -2,8 +2,42 @@
 // src/components/Header.astro
 ---
 
-<header style="display: flex; align-items: center; gap: 1rem; padding: 1rem;">
-    <img src="logo.svg" alt="Logo Dr. Villoria" width="150" height="150" />
-    <h1 style="font-size: 1.8rem;">Consulta Médica - Dr. Villoria</h1>
-</header>
-  
+
+<div class="header-container">
+    <div class="logo">
+        <a href="/">
+        <img src="/logo.svg" alt="Logo" height="40" />
+        </a>
+    </div>
+</div>
+
+
+<style>
+
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 0.5rem;
+  }
+
+  .logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+  }
+</style>

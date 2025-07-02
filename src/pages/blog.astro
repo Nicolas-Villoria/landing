@@ -1,0 +1,273 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+// Get all articles that are not drafts
+const allArticles = await getCollection('articles', ({ data }: { data: { draft?: boolean } }) => {
+  return !data.draft;
+});
+
+// Sort articles by publication date (newest first)
+const sortedArticles = allArticles.sort((a: CollectionEntry<'articles'>, b: CollectionEntry<'articles'>) => 
+  b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// Format date function
+function formatDate(date: Date): string {
+  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  return date.toLocaleDateString('es-ES', options);
+}
+---
+
+<Layout title="Blog | Dr. Villoria - Especialista en Aparato Digestivo">
+  <Header />
+  
+  <main>
+    <section class="blog-hero">
+      <div class="container">
+        <h1>Blog Médico</h1>
+        <p class="subtitle">Artículos y consejos sobre salud digestiva</p>
+      </div>
+    </section>
+    <div class="back-link-container">
+        <a href="/" class="back-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Volver al inicio
+        </a>
+    </div>
+    
+    <section class="blog-articles">
+      <div class="container">
+        <div class="articles-grid">
+          {sortedArticles.map((article: CollectionEntry<'articles'>) => (
+            <article class="article-card">
+              <div class="article-image">
+                <img src={article.data.image} alt={article.data.title} />
+                <div class="article-category">{article.data.category}</div>
+              </div>
+              <div class="article-content">
+                <h2 class="article-title">{article.data.title}</h2>
+                <p class="article-date">{formatDate(article.data.pubDate)}</p>
+                <p class="article-excerpt">{article.data.description}</p>
+                {article.data.externalLink ? (
+                  <a href={article.data.externalLink} class="article-link" target="_blank" rel="noopener noreferrer">
+                    Leer artículo completo <span class="arrow">→</span>
+                  </a>
+                ) : article.data.downloadFile ? (
+                  <a href={article.data.downloadFile} class="article-link" download>
+                    Descargar artículo <span class="arrow">→</span>
+                  </a>
+                ) : (
+                  <a href={`/blog/${article.slug}`} class="article-link">
+                    Leer artículo completo <span class="arrow">→</span>
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+    .blog-hero {
+        background-color: #f0f5ff;
+        padding: 4rem 0 4rem;
+        text-align: center;
+        border-radius: 20px;
+    }
+  
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+
+    }
+  
+    h1 {
+        font-size: 3rem;
+        color: #2c3e50;
+        margin: 0 0 0.5rem;
+    }
+  
+    .subtitle {
+        font-size: 1.3rem;
+        color: #4a5568;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+  
+    .blog-articles {
+        padding: 5rem 0;
+    }
+  
+    .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 3rem;
+    }
+  
+    .article-card {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        background-color: white;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+  
+    .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+  
+    .article-image {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+    }
+  
+    .article-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+  
+    .article-card:hover .article-image img {
+        transform: scale(1.05);
+    }
+  
+    .article-category {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        background-color: #4a90e2;
+        color: white;
+        padding: 0.3rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+  
+    .article-content {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+  
+    .article-title {
+        font-size: 1.4rem;
+        margin: 0 0 0.5rem;
+        color: #2d3748;
+        line-height: 1.4;
+    }
+  
+    .article-date {
+        font-size: 0.85rem;
+        color: #718096;
+        margin-bottom: 1rem;
+    }
+  
+    .article-excerpt {
+        font-size: 1rem;
+        color: #4a5568;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+  
+    .article-link {
+        align-self: flex-start;
+        color: #4a90e2;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.2s ease;
+        margin-top: auto;
+    }
+  
+    .arrow {
+        transition: transform 0.2s ease;
+        margin-left: 0.25rem;
+    }
+  
+    .article-link:hover .arrow {
+        transform: translateX(3px);
+    }
+  
+    @media (max-width: 992px) {
+        .articles-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+  
+    @media (max-width: 768px) {
+        .blog-hero {
+            padding: 3rem 0 3rem;
+        }
+    
+        h1 {
+            font-size: 2.5rem;
+        }
+    
+        .subtitle {
+            font-size: 1.1rem;
+        }
+    
+        .blog-articles {
+            padding: 4rem 0;
+        }
+    
+        .articles-grid {
+            grid-template-columns: 1fr;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    }
+
+    /* Back to home link styles */
+    .back-link-container {
+        text-align: center;
+        margin: 2rem 0;
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.75rem 2rem;
+        background-color: transparent;
+        color: #4a90e2;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 500;
+        border: 1px solid #4a90e2;
+        transition: all 0.3s ease;
+        gap: 0.5rem;
+    }
+
+    .back-link:hover {
+        background-color: rgba(74, 144, 226, 0.05);
+        transform: translateY(-2px);
+    }
+
+    .back-link svg {
+        transition: transform 0.2s ease;
+    }
+
+    .back-link:hover svg {
+        transform: translateX(-3px);
+    }
+</style>
